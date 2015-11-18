@@ -1,0 +1,28 @@
+<project name="Shivasoft Sandbox" default="SFDCFetch" basedir="." xmlns:sf="antlib:com.salesforce">
+	<property file="build.properties"/>
+	<property environment="env"/>
+
+	<target name="SFDCFetch">
+	      <!-- Retrieve the contents into another directory -->
+	      <sf:retrieve
+			username="joydeep_r_c@yahoo.com"
+		   password="j123oydeepCRHtSvWOdlz8X11vvmlxHz5r"
+	      
+		   serverurl="https://www.salesforce.com"
+	      		retrieveTarget="src"
+	      		unpackaged="package.xml"/>
+		
+	</target>
+
+	<target name="SFDCDeploy">
+	      <!-- Retrieve the contents into another directory -->
+	      <sf:deploy
+			username="joydeep_r_c@yahoo.com"
+		   password="j123oydeepCRHtSvWOdlz8X11vvmlxHz5r"
+	      
+		   serverurl="https://www.salesforce.com"
+	      	deployRoot="src"/>
+		
+	</target>
+
+</project>
