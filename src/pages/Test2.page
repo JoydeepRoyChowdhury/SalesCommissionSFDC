@@ -1,11 +1,9 @@
 <apex:page sidebar="false" controller="TestController">
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- 	
+	<apex:includeScript value="{!URLFOR($Resource.jquery)}"/>
+-->
 
-	<script>
-        function changeFont() {
-        		alert("clicked");
-                document.getElementById("account").style.fontWeight = "bold";
-        }
-    </script>
 
 
 	<h1>Hello World 2 3</h1>
@@ -44,6 +42,20 @@
 
         </apex:pageBlockSection>
 
-		<input type="button" value="Test" onclick="javascript:changeFont()"></input>
+	<script>
+        function changeFont() {
+        		alert("clicked");
+                document.getElementById("account").style.fontWeight = "bold";
+        }
+   	$(document).ready(function() {
+        $('#button_2').click(function() {
+          alert("Button 2 clicked");
+          $('#account').css("font-weight","normal");
+        });
+    });
+  </script>
+
+		<input type="button" id="b1" value="Bold" onclick="javascript:changeFont()"></input>
+		<input type="button" id="button_2" value="Unbold"></input>
 	</apex:pageBlock>
 </apex:page>
