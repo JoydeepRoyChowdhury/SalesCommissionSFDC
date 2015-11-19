@@ -30,7 +30,9 @@
 
 
 		<apex:pageBlockSection columns="1">
-
+		<apex:form>
+			<apex:inputText id="one"> </apex:inputText>
+		</apex:form>
              
 
             {! $User.FirstName } {! $User.LastName }
@@ -48,10 +50,13 @@
         		alert("clicked");
                 document.getElementById("account").style.fontWeight = "bold";
         }
-   	$(document).ready(function() {
-        $('#button_2').click(function() {
+        j$ = jQuery.noConflict();
+   	j$(document).ready(function() {
+        j$('#button_2').click(function() {
           alert("Button 2 clicked");
-          $('#account').css("font-weight","normal");
+          j$('#account').css("font-weight","normal");
+          j$('[id$=one]').val('test');
+          
         });
     });
   </script>
