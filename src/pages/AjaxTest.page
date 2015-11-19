@@ -1,0 +1,36 @@
+<apex:page Controller="TestRemoter">
+	<apex:includeScript value="{!$Resource.jquery}"/>
+    <script type="text/javascript">
+    j$ = jQuery.noConflict();
+   	j$(document).ready(function() {
+        j$('[id$=one]').change(function() {
+        	showTime();
+        });
+   	});
+   	
+    function showTime() {
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.TestRemoter.getCurrTime}',
+            function(result, event){
+                if (event.status) {
+			        j$("[id$='currTime']").html(result);
+                }
+            },
+            {escape: true}
+        );
+    }
+    </script>
+<apex:pageBlock Title="Ajax Sample">
+Hello <b> {!$User.FirstName}</b>.
+<apex:form >
+<br /><br />
+
+	<apex:inputText id="one"> </apex:inputText>
+</apex:form>
+</apex:pageBlock>
+
+<apex:pageBlock title="AjaxData">
+		<apex:outputText id="currTime"/>
+</apex:pageBlock>
+
+</apex:page>
