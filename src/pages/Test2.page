@@ -1,5 +1,7 @@
 <apex:page sidebar="false" controller="TestController">
 	<apex:includeScript value="{!$Resource.jquery}"/>
+	
+	<apex:stylesheet value="{!$Resource.css}" />
 
 
 
@@ -39,6 +41,8 @@
 
         </apex:pageBlockSection>
 
+		<p>This is normal text</p>
+		<p class="bold">This is bold text</p>
 	<script>
         function changeFont() {
         		alert("clicked");
