@@ -1,32 +1,38 @@
 <apex:page sidebar="false" controller="TestController">
 
- 
+	<script>
+        function changeFont() {
+        		alert("clicked");
+                document.getElementById("account").style.fontWeight = "bold";
+        }
+    </script>
 
-    <h1>Hello World 2 3</h1>
 
-     
+	<h1>Hello World 2 3</h1>
 
-    <apex:pageBlock title="A Block Title" >
 
-        <apex:pageBlockSection title="A Section Title 1 ">
+
+	<apex:pageBlock title="A Block Title">
+
+		<apex:pageBlockSection title="A Section Title 1 ">
 
             I'm three components deep!
 
         </apex:pageBlockSection>
 
-         
 
-        <apex:pageBlockSection title="A New Section">
+
+		<apex:pageBlockSection title="A New Section">
 
             This is another section.
 
-            You belong to Account Name: {!account.name}"
+            You belong to Account Name: <div id="account">{!account.id} {!account.name}"</div>
 
 
         </apex:pageBlockSection>
 
-    
-        <apex:pageBlockSection columns="1">
+
+		<apex:pageBlockSection columns="1">
 
              
 
@@ -38,5 +44,6 @@
 
         </apex:pageBlockSection>
 
-    </apex:pageBlock>
-    </apex:page>
+		<input type="button" value="Test" onclick="javascript:changeFont()"></input>
+	</apex:pageBlock>
+</apex:page>
