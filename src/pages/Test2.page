@@ -1,8 +1,5 @@
 <apex:page sidebar="false" controller="TestController">
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!-- 	
-	<apex:includeScript value="{!URLFOR($Resource.jquery)}"/>
--->
+	<apex:includeScript value="{!$Resource.jquery}"/>
 
 
 
