@@ -18,8 +18,8 @@
 	<target name="SFDCDeploy">
 	      <!-- Retrieve the contents into another directory -->
 	      <sf:deploy
-			username="joydeep_r_c@yahoo.com"
-		   password="j123oydeepCRHtSvWOdlz8X11vvmlxHz5r"
+			username="${sf.username}"
+		   password="${sf.password}"
 	      
 		   serverurl="https://www.salesforce.com"
 	      	deployRoot="src"/>
