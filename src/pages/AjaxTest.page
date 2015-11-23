@@ -9,8 +9,10 @@
    	});
    	
     function showTime() {
+    	var searchParam = j$('[id$=one]').val();
         Visualforce.remoting.Manager.invokeAction(
             '{!$RemoteAction.TestRemoter.getCurrTime}',
+            searchParam,
             function(result, event){
                 if (event.status) {
 			        j$("[id$='currTime']").html(result);
