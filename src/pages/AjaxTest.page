@@ -1,4 +1,4 @@
-<apex:page Controller="TestRemoter">
+<apex:page sidebar="false" showheader="false" Controller="TestRemoter">
 	<apex:includeScript value="{!$Resource.jquery}"/>
     <script type="text/javascript">
     j$ = jQuery.noConflict();
