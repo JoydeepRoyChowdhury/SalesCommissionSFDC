@@ -6,8 +6,8 @@
 			<mkdir dir="serverCopy"/>
 	      <!-- Retrieve the contents into another directory -->
 	      <sf:retrieve
-			username="joydeep_r_c@yahoo.com"
-		   password="j123oydeepCRHtSvWOdlz8X11vvmlxHz5r"
+			username="${sf.username}"
+		   password="${sf.password}"
 	      
 		   serverurl="https://www.salesforce.com"
 	      		retrieveTarget="serverCopy"
