@@ -1,38 +1,53 @@
 <apex:page sidebar="false" showheader="false" Controller="TestRemoter">
-	<apex:includeScript value="{!$Resource.jquery}"/>
-    <script type="text/javascript">
-    j$ = jQuery.noConflict();
-   	j$(document).ready(function() {
-        j$('[id$=one]').change(function() {
-        	showTime();
-        });
-   	});
-   	
-    function showTime() {
-    	var searchParam = j$('[id$=one]').val();
-        Visualforce.remoting.Manager.invokeAction(
-            '{!$RemoteAction.TestRemoter.getCurrTime}',
-            searchParam,
-            function(result, event){
-                if (event.status) {
-			        j$("[id$='currTime']").html(result);
-                }
-            },
-            {escape: true}
-        );
-    }
-    </script>
-<apex:pageBlock Title="Ajax Sample">
+	<apex:includeScript value="{!$Resource.jquery}" />
+	<script type="text/javascript">
+		j$ = jQuery.noConflict();
+		j$(document).ready(function() {
+			j$('[id$=one]').keyup(function() {
+
+				showGoogle();
+			});
+		});
+
+		function showDetails(details) {
+			j$("[id$='currTimeDetails']").html(details);
+		}
+		
+		function showGoogle() {
+			var searchParam = j$('[id$=one]').val();
+			if (searchParam.endsWith(' ')) {
+
+				Visualforce.remoting.Manager.invokeAction(
+						'{!$RemoteAction.TestRemoter.getCurrTime}',
+						searchParam, function(result, event) {
+							if (event.status) {
+								j$("[id$='currTime']").html('');
+								for (i = 0; i < result.length; i++) { 
+									str = result[i].contents.replace(/(?:\r\n|\r|\n)/g, '');
+									j$("[id$='currTime']").append('<a onmouseover="showDetails(\''+ str +'\')" href="' + result[i].url + '">' + result[i].title + '</a><br/>');
+								}
+							}
+						}, {
+							escape : true
+						});
+			}
+		}
+		
+	</script>
+	<apex:pageBlock Title="Your query">
 Hello <b> {!$User.FirstName}</b>.
 <apex:form >
-<br /><br />
+			<br />
+			<br />
 
-	<apex:inputText id="one"> </apex:inputText>
-</apex:form>
-</apex:pageBlock>
+			<apex:inputText id="one">
+			</apex:inputText>
+		</apex:form>
+	</apex:pageBlock>
 
-<apex:pageBlock title="AjaxData">
-		<apex:outputText id="currTime"/>
-</apex:pageBlock>
+	<apex:pageBlock title="Is this your issue ?">
+		<apex:outputText id="currTime" />
+		<apex:outputText id="currTimeDetails" />
+	</apex:pageBlock>
 
 </apex:page>
